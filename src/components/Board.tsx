@@ -9,6 +9,7 @@ interface Props {
     connections:         Connection[];
     placedComponents:    Resistor[];
     draggingConnection:  DraggingConnection;
+    onRemoveConnection: (id: string) => void;
 }
 
 export function Board({
@@ -17,6 +18,7 @@ export function Board({
     connections,
     placedComponents,
     draggingConnection,
+    onRemoveConnection
 }: Props) {
     const { setNodeRef } = useDroppable({ id: "dropZone" });
 
@@ -59,12 +61,26 @@ export function Board({
                     );
                     if (!from || !to) return null;
                     return (
+                        <g key={conn.id}>
+                            {/* Невидимая толстая линия — зона клика */}
+                            <line
+                                x1={from.x} y1={from.y}
+                                x2={to.x}   y2={to.y}
+                                stroke="transparent"
+                                strokeWidth="12"        // широкая — легко кликнуть
+                                style={{
+                                    cursor:      "pointer",
+                                    pointerEvents: "stroke",
+                                }}
+                                onClick={() => onRemoveConnection(conn.id)}
+                            />
                         <line
                             key={conn.id}
                             x1={from.x} y1={from.y}
                             x2={to.x}   y2={to.y}
                             stroke="#6366f1" strokeWidth="2.5"
                         />
+                    </g>
                     );
                 })}
 

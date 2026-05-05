@@ -10,6 +10,7 @@ interface Props extends Resistor {
         e: React.MouseEvent
     ) => void;
     onConnectionEnd?: (componentId: string, point: "left" | "right") => void;
+    onRemove?:             (id: string) => void;
 }
 
 export function DraggableResistor({
@@ -20,8 +21,9 @@ export function DraggableResistor({
     isDraggingConnection = false,
     onConnectionStart,
     onConnectionEnd,
+    onRemove
 }: Props) {
-    const { setNodeRef, listeners, attributes, transform, isDragging } =
+    const { setNodeRef, listeners, attributes, transform, isDragging, } =
         useDraggable({ id });
 
     const style: React.CSSProperties = {
@@ -63,6 +65,34 @@ export function DraggableResistor({
             </div>
 
             <div style={{ position: "relative" }}>
+                {!isTemplate && onRemove && (
+                    <button
+                        onMouseDown={e => e.stopPropagation()} // не начинать drag
+                        onClick={e => {
+                            e.stopPropagation();
+                            onRemove(id);
+                        }}
+                        style={{
+                            position:   "absolute",
+                            top:        -8,
+                            right:      -8,
+                            width:      "16px",
+                            height:     "16px",
+                            borderRadius: "50%",
+                            background: "#ef4444",
+                            color:      "white",
+                            border:     "none",
+                            cursor:     "pointer",
+                            fontSize:   "12px",
+                            lineHeight: "18px",
+                            textAlign:  "center",
+                            zIndex:     100,
+                            padding:    0,
+                        }}
+                    >
+                        ×
+                    </button>
+                )}
                 <svg
                     width="60" height="30" viewBox="0 0 60 30"
                     style={{ display: "block" }}

@@ -66,6 +66,21 @@ export function useConnections(boardRef: React.RefObject<HTMLDivElement | null>)
         setConnections([]);
     }
 
+    function removeConnection(id: string) {
+        setConnections(prev => prev.filter(c => c.id !== id));
+    }
+
+    // НОВОЕ: удалить все соединения конкретного резистора
+    function removeConnectionsForComponent(componentId: string) {
+        setConnections(prev =>
+            prev.filter(
+                c => c.from.componentId !== componentId &&
+                     c.to.componentId   !== componentId
+            )
+        );
+    }
+
+
     return {
         connections,
         draggingConnection,
@@ -74,5 +89,7 @@ export function useConnections(boardRef: React.RefObject<HTMLDivElement | null>)
         handleMouseMove,
         handleMouseUp,
         resetConnections,
+        removeConnection,              
+        removeConnectionsForComponent,
     };
 }

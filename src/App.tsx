@@ -27,6 +27,8 @@ export default function App() {
         handleMouseMove,
         handleMouseUp,
         resetConnections,
+        removeConnection,              
+        removeConnectionsForComponent,
     } = useConnections(boardRef);
 
     const { activeId, handleDragStart, handleDragEnd } = useDragHandlers(
@@ -37,6 +39,11 @@ export default function App() {
     );
 
     const { totalResistance } = analyzeCircuit(placedComponents, connections);
+
+    function handleRemoveComponent(id: string) {
+        setPlacedComponents(prev => prev.filter(c => c.id !== id));
+        removeConnectionsForComponent(id);
+    }
 
     function handleReset() {
         setPlacedComponents([]);
@@ -99,6 +106,7 @@ export default function App() {
                         connections={connections}
                         placedComponents={placedComponents}
                         draggingConnection={draggingConnection}
+                        onRemoveConnection={removeConnection}
                     >
                         {placedComponents.map((comp) => (
                             <DraggableResistor
@@ -107,6 +115,7 @@ export default function App() {
                                 isDraggingConnection={!!draggingConnection}
                                 onConnectionStart={handleConnectionStart}
                                 onConnectionEnd={handleConnectionEnd}
+                                onRemove={handleRemoveComponent}
                             />
                         ))}
                     </Board>
