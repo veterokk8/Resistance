@@ -1,5 +1,5 @@
 import { useDraggable } from "@dnd-kit/core";
-import type { Resistor } from "../types";
+import type { Resistor } from "../types.ts";
 
 interface Props extends Resistor {
     isTemplate?:           boolean;
@@ -17,13 +17,13 @@ export function DraggableResistor({
     id,
     value,
     position,
-    isTemplate           = false,
+    isTemplate = false,
     isDraggingConnection = false,
     onConnectionStart,
     onConnectionEnd,
     onRemove
 }: Props) {
-    const { setNodeRef, listeners, attributes, transform, isDragging, } =
+    const { setNodeRef, listeners, attributes, transform, isDragging } =
         useDraggable({ id });
 
     const style: React.CSSProperties = {

@@ -1,4 +1,4 @@
-import type { Task, Resistor, ConnectionType } from "../types";
+import type { Task, Resistor, ConnectionType } from "../types.ts";
 
 export const TASKS: Task[] = [
     {
@@ -37,7 +37,13 @@ export const TASKS: Task[] = [
         targetResistance: 17,
         hint: "Попробуй последовательно 5Ω + 10Ω + 2Ω",
     },
-];
+    {
+        id: 7,
+        description: "Собери цепь с сопротивлением 11 Ω",
+        targetResistance: 11,
+        hint: "Попробуй параллельно 5Ω + 20Ω и последовательно 2Ω + 5Ω",
+    },
+    ];
 
 export const TOLERANCE = 0.1;
 

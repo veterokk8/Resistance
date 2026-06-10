@@ -1,4 +1,4 @@
-import type { Resistor, Connection }                        from "../types";
+import type { Resistor, Connection }                        from "../types.ts";
 import { analyzeCircuit }                                   from "../utils/circuitAnalysis";
 import { calculateSeriesResistance,
          calculateParallelResistance }                      from "../utils/resistorCalculations";

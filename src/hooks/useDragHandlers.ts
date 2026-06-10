@@ -1,6 +1,6 @@
 import { useState }                          from "react";
 import type { DragStartEvent, DragEndEvent } from "@dnd-kit/core";
-import type { Resistor, DraggingConnection }                     from "../types";
+import type { Resistor, DraggingConnection }                     from "../types.ts";
 import { AVAILABLE_COMPONENTS }              from "../constants/tasks";
 
 

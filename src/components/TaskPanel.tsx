@@ -11,11 +11,14 @@ interface Props {
     onPrev:            () => void;
     onReset:           () => void;
     onToggleHint:      () => void;
+     isLastTask: boolean;
+    isSuccess:  boolean;
 }
 
 export function TaskPanel({
     task, currentResistance, taskIndex, totalTasks,
     showHint, onNext, onPrev, onReset, onToggleHint,
+    isLastTask
 }: Props) {
     const diff = currentResistance !== null
         ? Math.abs(currentResistance - task.targetResistance)
@@ -156,14 +159,33 @@ export function TaskPanel({
                     cursor: "pointer", fontSize: "12px", color: "#dc2626",
                 }}>🗑</button>
 
-                <button onClick={onNext} disabled={taskIndex === totalTasks - 1} style={{
-                    flex: 1, padding: "8px",
-                    background: taskIndex === totalTasks - 1 ? "#e5e7eb" : "#e0e7ff",
-                    border: "none", borderRadius: "6px",
-                    cursor: taskIndex === totalTasks - 1 ? "not-allowed" : "pointer",
-                    fontSize: "12px", fontWeight: "500",
-                    color: taskIndex === totalTasks - 1 ? "#9ca3af" : "#4338ca",
-                }}>Вперёд →</button>
+                <button
+    onClick={onNext}
+    disabled={taskIndex === totalTasks - 1 && !isSuccess}
+    style={{
+        flex:         1,
+        padding:      "8px",
+        background:   isLastTask && isSuccess
+            ? "linear-gradient(135deg, #22c55e, #16a34a)"
+            : taskIndex === totalTasks - 1
+            ? "#e5e7eb"
+            : "#e0e7ff",
+        border:       "none",
+        borderRadius: "6px",
+        cursor:       (taskIndex === totalTasks - 1 && !isSuccess)
+            ? "not-allowed"
+            : "pointer",
+        fontSize:     "12px",
+        fontWeight:   "500",
+        color:        isLastTask && isSuccess
+            ? "white"
+            : taskIndex === totalTasks - 1
+            ? "#9ca3af"
+            : "#4338ca",
+    }}
+>
+    {isLastTask && isSuccess ? "🏆 Завершить" : "Вперёд →"}
+</button>
             </div>
         </div>
     );

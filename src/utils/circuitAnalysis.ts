@@ -1,4 +1,4 @@
-import type { Branch, ConnectionType, Resistor, Connection, CircuitAnalysis } from "../types";
+import type { Branch, ConnectionType, Resistor, Connection, CircuitAnalysis } from "../types.ts";
 
 export class UnionFind {
     private parent = new Map<string, string>();

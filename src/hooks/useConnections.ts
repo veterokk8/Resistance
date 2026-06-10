@@ -1,9 +1,9 @@
 import { useState }       from "react";
-import type { Connection, DraggingConnection } from "../types";
+import type { Connection, DraggingConnection } from "../types.ts";
 
 
 export function useConnections(boardRef: React.RefObject<HTMLDivElement | null>) {
-    const [connections, setConnections]             = useState<Connection[]>([]);
+    const [connections, setConnections] = useState<Connection[]>([]);
     const [draggingConnection, setDraggingConnection] = useState<DraggingConnection>(null);
 
     function handleConnectionStart(
@@ -70,7 +70,7 @@ export function useConnections(boardRef: React.RefObject<HTMLDivElement | null>)
         setConnections(prev => prev.filter(c => c.id !== id));
     }
 
-    // НОВОЕ: удалить все соединения конкретного резистора
+    //  удаляем все соединения конкретного резистора
     function removeConnectionsForComponent(componentId: string) {
         setConnections(prev =>
             prev.filter(

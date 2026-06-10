@@ -1,5 +1,5 @@
 import { useDroppable }  from "@dnd-kit/core";
-import type { Connection, Resistor, DraggingConnection } from "../types";
+import type { Connection, Resistor, DraggingConnection } from "../types.ts";
 import { getConnectionPointPosition } from "../utils/circuitAnalysis";
 
 
@@ -18,7 +18,7 @@ export function Board({
     connections,
     placedComponents,
     draggingConnection,
-    onRemoveConnection
+    onRemoveConnection,
 }: Props) {
     const { setNodeRef } = useDroppable({ id: "dropZone" });
 
@@ -39,6 +39,7 @@ export function Board({
                 backgroundSize:  "20px 20px",
             }}
         >
+            
             {/* Резисторы на поле */}
             {children}
 

@@ -1,4 +1,4 @@
-import type { Resistor } from "../types";
+import type { Resistor } from "../types.ts";
 
 export function calculateSeriesResistance(resistors: Resistor[]): number {
     return resistors.reduce((sum, r) => sum + r.value, 0);
