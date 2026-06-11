@@ -1,73 +1,55 @@
-# React + TypeScript + Vite
+# Resistance — Gamified Training Simulator for Electrical Engineers
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Resistance** is an interactive web application that helps electrical power engineers and technicians practice essential professional skills in a gamified format.
 
-Currently, two official plugins are available:
+## ✨ Key Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- 4 unique training modes with different mechanics
+- Scoring system and progress saving
+- Modern and clean user interface
 
-## React Compiler
+## 🎮 Training Modes
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 1. Resistor Circuit Assembly
+Assemble an electrical circuit from resistors to achieve the target resistance value. Trains understanding of series and parallel connections.
 
-## Expanding the ESLint configuration
+### 2. Occupational Safety
+Quiz mode with questions on occupational safety and electrical safety regulations. Helps reinforce knowledge of norms and standards.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 3. First Aid
+Practice providing first medical aid in case of electrical injuries and other emergency situations.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 4. Emergency Response on Substation
+Simulator for actions during various emergency situations at a power substation. Trains correct decision-making and sequence of actions under critical conditions.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 📸 Screenshots
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+**Login Screen**  
+![Login](Авторизация.jpg)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+**Mode 1: Resistor Assembly**  
+![Resistor Assembly](Резисторы.jpg)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+**Mode 2: Occupational Safety**  
+![Occupational Safety](Охрана%20труда.jpg)
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+**Mode 3: First Aid**  
+![First Aid](Оказание%20первой%20помощи.jpg)
+
+**Mode 4: Emergency Response**  
+![Emergency Response](Ликвидация%20аварий.jpg)
+
+## 🛠 Tech Stack
+
+- React + TypeScript
+- Vite
+- Tailwind CSS
+- localStorage
+
+## 🚀 How to Run Locally
+
+```bash
+git clone https://github.com/veterokk8/Resistance.git
+cd Resistance
+npm install
+npm run dev
