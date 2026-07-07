@@ -1,0 +1,168 @@
+/* ===== ФОН СТРАНИЦЫ ===== */
+.menu-screen {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #7b6fd4 0%, #9b8fe0 40%, #b8a9e8 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* ===== БЕЛАЯ КАРТОЧКА ===== */
+.menu-card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 36px 32px;
+    width: 100%;
+    max-width: 560px;
+    box-shadow: 0 20px 60px rgba(80, 60, 180, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+/* ===== ЗАГОЛОВОК ===== */
+.menu-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    text-align: center;
+}
+
+.menu-avatar {
+    font-size: 48px;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.menu-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: #4a3fbf;
+    margin: 0;
+}
+
+.menu-subtitle {
+    font-size: 14px;
+    color: #888;
+    margin: 0;
+}
+
+/* ===== СЕТКА 2×2 ===== */
+.menu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    width: 100%;
+}
+
+/* ===== КНОПКИ ===== */
+.menu-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 18px 12px;
+    background: #ffffff;
+    border: 2px solid #e8e4f8;
+    border-radius: 16px;
+    cursor: pointer;
+    text-align: center;
+    color: #333;
+
+    /* Анимация */
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+.menu-btn:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 8px 24px rgba(100, 80, 200, 0.2);
+    border-color: #7b6fd4;
+    background: #f5f2ff;
+}
+
+.menu-btn:active {
+    transform: translateY(0px) scale(0.98);
+    box-shadow: 0 2px 8px rgba(100, 80, 200, 0.15);
+}
+
+.menu-btn-icon {
+    font-size: 36px;
+    line-height: 1;
+
+    /* Анимация иконки */
+    transition: transform 0.2s ease;
+}
+
+.menu-btn:hover .menu-btn-icon {
+    transform: scale(1.2) rotate(-5deg);
+}
+
+.menu-btn-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.menu-btn-text strong {
+    font-size: 14px;
+    font-weight: 700;
+    color: #4a3fbf;
+}
+
+.menu-btn-text hr {
+    border: none;
+    border-top: 1px solid #e8e4f8;
+    margin: 2px 0;
+}
+
+.menu-btn-text em {
+    font-size: 12px;
+    font-style: normal;
+    color: #888;
+}
+
+/* ===== КНОПКА ЛИДЕРОВ (на всю ширину) ===== */
+.menu-btn--leaderboard {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 16px;
+    padding: 16px 20px;
+    width: 100%;
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+    border: none;
+    color: #fff;
+}
+
+.menu-btn--leaderboard:hover {
+    background: linear-gradient(135deg, #5a4bd1, #9088f0);
+    border-color: transparent;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 24px rgba(100, 80, 200, 0.4);
+}
+
+.menu-btn--leaderboard .menu-btn-text strong {
+    color: #fff;
+    font-size: 15px;
+}
+
+.menu-btn--leaderboard .menu-btn-text em {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.menu-btn--leaderboard .menu-btn-text hr {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.menu-btn--leaderboard .menu-btn-icon {
+    font-size: 32px;
+}

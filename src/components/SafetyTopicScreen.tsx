@@ -1,4 +1,5 @@
 import { SAFETY_TOPICS } from "../constants/safetyData";
+import "./Safety.css"
 
 interface Props {
     onSelectTopic: (topicId: string) => void;
@@ -8,6 +9,7 @@ interface Props {
 export function SafetyTopicScreen({ onSelectTopic, onBack }: Props) {
     return (
         <div className="topic-screen">
+            <div className="topic-card-wrapper">
 
             {/* Шапка */}
             <div className="topic-header">
@@ -29,6 +31,7 @@ export function SafetyTopicScreen({ onSelectTopic, onBack }: Props) {
                         <span className="topic-arrow">→</span>
                     </button>
                 ))}
+            </div>
             </div>
 
         </div>

@@ -2,6 +2,7 @@ import { useSafetyQuiz } from "../hooks/useSafetyQuiz";
 import { formatTime }    from "../hooks/useTimer";
 import { SAFETY_QUESTIONS } from "../constants/safetyData";
 import type { User, SafetyResult } from "../types";
+import "./Safety.css"
 
 interface Props {
     topicId:  string;

@@ -1,4 +1,5 @@
 import type { User } from "../types";
+import "./MenuScreen.css"
 
 interface MenuScreenProps {
     user: User;
@@ -13,16 +14,17 @@ export function MenuScreen({ user, onGoGame, onGoSafety,
                 onGoLeaderboard, onGoFirstAid, onGoEmergency, }: MenuScreenProps) {
     return (
         <div className="menu-screen">
+            <div className="menu-card">
 
             {/* Приветствие */}
             <div className="menu-header">
                 <span className="menu-avatar">{user.avatar}</span>
-                <h2 className="menu-name">Привет, {user.name}!</h2>
+                <h2 className="menu-name">Здравствуй, {user.name}!</h2>
                 <p className="menu-subtitle">Выбери режим</p>
             </div>
 
             {/* Кнопки */}
-            <div className="menu-buttons">
+            <div className="menu-grid">
 
                 <button className="menu-btn" onClick={onGoGame}>
                     <span className="menu-btn-icon">⚙️</span>
@@ -60,7 +62,7 @@ export function MenuScreen({ user, onGoGame, onGoSafety,
                     </div>
                 </button>
 
-                <button className="menu-btn" onClick={onGoLeaderboard}>
+                <button className="menu-btn menu-btn--leaderboard" onClick={onGoLeaderboard}>
                     <span className="menu-btn-icon">🏆</span>
                     <div className="menu-btn-text">
                         <strong>Таблица лидеров</strong>
@@ -69,6 +71,7 @@ export function MenuScreen({ user, onGoGame, onGoSafety,
                     </div>
                 </button>
 
+            </div>
             </div>
         </div>
     );

@@ -46,10 +46,10 @@ export function AuthScreen({ onLogin }: Props) {
                 <div style={{ textAlign: "center", marginBottom: "32px" }}>
                     <div style={{ fontSize: "48px", marginBottom: "8px" }}>⚡</div>
                     <h1 style={{ margin: 0, fontSize: "22px", color: "#4338ca" }}>
-                        Давай поиграем
+                        Проведём мини-тренинг
                     </h1>
                     <p style={{ margin: "8px 0 0", color: "#6b7280", fontSize: "13px" }}>
-                        Введи своё имя, чтобы начать
+                        Введите своё имя, чтобы начать
                     </p>
                 </div>
 
@@ -63,7 +63,7 @@ export function AuthScreen({ onLogin }: Props) {
                             fontWeight:   "600",
                             marginBottom: "8px",
                         }}>
-                            Выбери аватар
+                            Выберите аватар
                         </label>
                         <div style={{
                             display:       "flex",
@@ -105,13 +105,13 @@ export function AuthScreen({ onLogin }: Props) {
                             fontWeight:   "600",
                             marginBottom: "8px",
                         }}>
-                            Твоё имя
+                            Ваше имя
                         </label>
                         <input
                             type="text"
                             value={name}
                             onChange={e => { setName(e.target.value); setError(""); }}
-                            placeholder="Например: Иван"
+                            placeholder="Минимум два символа"
                             style={{
                                 width:        "100%",
                                 padding:      "12px 16px",
@@ -151,7 +151,7 @@ export function AuthScreen({ onLogin }: Props) {
                         onMouseEnter={e => (e.currentTarget.style.opacity = "0.9")}
                         onMouseLeave={e => (e.currentTarget.style.opacity = "1")}
                     >
-                        🚀 Начать игру
+                        🚀 Начать занятие
                     </button>
                 </form>
             </div>

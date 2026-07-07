@@ -51,6 +51,9 @@ export function DraggableResistor({
         onConnectionEnd?.(id, point);
     };
 
+    // Радиус невидимой зоны захвата — меняй под себя
+    const HIT_RADIUS = 12;
+
     return (
         <div ref={setNodeRef} style={style}>
             <div
@@ -67,7 +70,7 @@ export function DraggableResistor({
             <div style={{ position: "relative" }}>
                 {!isTemplate && onRemove && (
                     <button
-                        onMouseDown={e => e.stopPropagation()} // не начинать drag
+                        onMouseDown={e => e.stopPropagation()}
                         onClick={e => {
                             e.stopPropagation();
                             onRemove(id);
@@ -95,16 +98,26 @@ export function DraggableResistor({
                 )}
                 <svg
                     width="60" height="30" viewBox="0 0 60 30"
-                    style={{ display: "block" }}
+                    style={{ display: "block", overflow: "visible" }} // ← overflow:visible чтобы зона захвата не обрезалась
                     {...(isTemplate ? { ...listeners, ...attributes } : {})}
                 >
                     {!isTemplate && (
-                        <circle
-                            cx="3" cy="15" r="4" fill="green"
-                            style={{ cursor: "crosshair", pointerEvents: "auto" }}
-                            onMouseDown={(e) => handlePointMouseDown(e, "left")}
-                            onMouseUp={(e)   => handlePointMouseUp(e,   "left")}
-                        />
+                        <>
+                            {/* Видимая левая точка (без событий) */}
+                            <circle
+                                cx="3" cy="15" r="4"
+                                fill="green"
+                                style={{ pointerEvents: "none" }}
+                            />
+                            {/* Невидимая зона захвата левой точки */}
+                            <circle
+                                cx="3" cy="15" r={HIT_RADIUS}
+                                fill="transparent"
+                                style={{ cursor: "crosshair", pointerEvents: "auto" }}
+                                onMouseDown={(e) => handlePointMouseDown(e, "left")}
+                                onMouseUp={(e)   => handlePointMouseUp(e,   "left")}
+                            />
+                        </>
                     )}
 
                     <g
@@ -125,12 +138,22 @@ export function DraggableResistor({
                     </g>
 
                     {!isTemplate && (
-                        <circle
-                            cx="57" cy="15" r="4" fill="green"
-                            style={{ cursor: "crosshair", pointerEvents: "auto" }}
-                            onMouseDown={(e) => handlePointMouseDown(e, "right")}
-                            onMouseUp={(e)   => handlePointMouseUp(e,   "right")}
-                        />
+                        <>
+                            {/* Видимая правая точка (без событий) */}
+                            <circle
+                                cx="57" cy="15" r="4"
+                                fill="green"
+                                style={{ pointerEvents: "none" }}
+                            />
+                            {/* Невидимая зона захвата правой точки */}
+                            <circle
+                                cx="57" cy="15" r={HIT_RADIUS}
+                                fill="transparent"
+                                style={{ cursor: "crosshair", pointerEvents: "auto" }}
+                                onMouseDown={(e) => handlePointMouseDown(e, "right")}
+                                onMouseUp={(e)   => handlePointMouseUp(e,   "right")}
+                            />
+                        </>
                     )}
                 </svg>
             </div>
